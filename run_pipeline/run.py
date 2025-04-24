@@ -157,7 +157,7 @@ def main():
     for layer_id in range(model_A_startLayer, model_A_endLayer, layer_step_size_A): 
         print("Model A Layer: " + str(layer_id))
         with torch.inference_mode():
-            weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model, sae_name, inputs, 
+            weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model=model, sae_name=sae_name, inputs=inputs, 
                                                                                      layer_id=layer_id, batch_size=32,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_1[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
@@ -176,7 +176,7 @@ def main():
     for layer_id in range(model_B_startLayer, model_B_endLayer, layer_step_size_B): 
         print("Model B Layer: " + str(layer_id))
         with torch.inference_mode():
-            weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model_2, sae_name_2, inputs, 
+            weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model=model_2, sae_name=sae_name_2,inputs=inputs, 
                                                                                      layer_id=layer_id, batch_size=32,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_2[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
