@@ -29,7 +29,7 @@ def get_sae_actvs(model=None, model_name=None, sae_name=None, inputs=None, layer
         reshaped_activations (torch.Tensor): The pre-activation outputs reshaped.
         orig_actvs (torch.Tensor): The original batched pre-activations.
     """    
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     
     ### Get LLM Residual Stream activations ###
     if compare_MLPs_bool:
@@ -85,7 +85,7 @@ def get_sae_actvs(model=None, model_name=None, sae_name=None, inputs=None, layer
             release = sae_name, # "gemma-2b-res-jb"
             sae_id = sae_id,
         )
-        sae = sae.to('cuda')
+        sae = sae.to('cpu')
         sae.eval()  # prevents error if we're expecting a dead neuron mask for who grads
 
     weight_matrix_np = sae.W_dec.cpu().detach().numpy()
