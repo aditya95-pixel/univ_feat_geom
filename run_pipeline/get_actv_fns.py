@@ -10,7 +10,7 @@ from sparsify import Sae
 # Also support alternate SAE loading via sae_lens.
 from sae_lens import SAE
 
-def get_sae_actvs(model, model_name, sae_name, inputs, layer_id, batch_size=32, 
+def get_sae_actvs(model=None, model_name=None, sae_name=None, inputs=None, layer_id=None, batch_size=32, 
                   sae_lib='eleuther', compare_MLPs_bool=False):
     """
     Process the SAE activations in batches to avoid OOM errors.
