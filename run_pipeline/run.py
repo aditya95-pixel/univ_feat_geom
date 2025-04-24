@@ -158,7 +158,7 @@ def main():
         print("Model A Layer: " + str(layer_id))
         with torch.inference_mode():
             weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model, sae_name, inputs, 
-                                                                                     layer_id, batch_size=32,
+                                                                                     layer_id=layer_id, batch_size=32,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_1[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
 
@@ -177,7 +177,7 @@ def main():
         print("Model B Layer: " + str(layer_id))
         with torch.inference_mode():
             weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model_2, sae_name_2, inputs, 
-                                                                                     layer_id, batch_size=32,
+                                                                                     layer_id=layer_id, batch_size=32,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_2[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
 
