@@ -24,7 +24,7 @@ from sparsify.config import SaeConfig
 from sparsify.utils import decoder_impl
 from sparsify import Sae
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
+device ="cpu"
 
 ## load local fns
 from correlation_fns import *
@@ -123,9 +123,9 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     ### load data
-    from datasets import load_dataset
-    dataset = load_dataset("Skylion007/openwebtext", split="train", streaming=True, trust_remote_code=True)
-
+    from datasets import load_from_disk
+    dataset = load_from_disk("openwebtext-1k")
+    dataset = dataset.shuffle(seed=42)
     def get_next_batch(dataset, batch_size=100, max_length=100):
         batch = []
         dataset_iter = iter(dataset)
