@@ -74,7 +74,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run pythia model comparisons")
     parser.add_argument("--model_name_1", type=str, default="EleutherAI/sae-pythia-70m-32k", help="Model 1")
     parser.add_argument("--model_name_2", type=str, default="EleutherAI/sae-pythia-160m-32k", help="Model 2")
-    parser.add_argument("--batch_size", type=int, default=100, help="Batch size")
+    parser.add_argument("--batch_size", type=int, default=8, help="Batch size")
     parser.add_argument("--max_length", type=int, default=100, help="Maximum sequence length")
     parser.add_argument("--num_rand_runs", type=int, default=1, help="Number of random runs")
     parser.add_argument("--oneToOne_bool", action="store_true", help="Use one-to-one mapping flag")
