@@ -24,8 +24,8 @@ from sparsify.config import SaeConfig
 from sparsify.utils import decoder_impl
 from sparsify import Sae
 
-device ="cpu"
-
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(device)
 ## load local fns
 from correlation_fns import *
 from sim_fns import *
@@ -203,7 +203,6 @@ def main():
             
             for key, value in model_layer_to_dictscores[layer_id][layer_id_2].items():
                 print(key + ": " + str(value))
-            print("\n")
 
             with open(f'{sae_name}_{sae_name_2}_multL_scores.pkl', 'wb') as f: # override prev save at each new score
                 pickle.dump(model_layer_to_dictscores, f)
