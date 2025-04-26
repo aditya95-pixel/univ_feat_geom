@@ -126,7 +126,7 @@ def main():
     from datasets import load_from_disk
     dataset = load_from_disk("openwebtext-200")
     dataset = dataset.shuffle(seed=42)
-    def get_next_batch(dataset, batch_size=100, max_length=100):
+    def get_next_batch(dataset, batch_size=8, max_length=100):
         batch = []
         dataset_iter = iter(dataset)
         for _ in range(batch_size):
@@ -158,7 +158,7 @@ def main():
         print("Model A Layer: " + str(layer_id))
         with torch.inference_mode():
             weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model=model, sae_name=sae_name, inputs=inputs, 
-                                                                                     layer_id=layer_id, batch_size=32,
+                                                                                     layer_id=layer_id, batch_size=8,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_1[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
 
@@ -177,7 +177,7 @@ def main():
         print("Model B Layer: " + str(layer_id))
         with torch.inference_mode():
             weight_matrix, reshaped_activations, feature_acts_model = get_sae_actvs(model=model_2, sae_name=sae_name_2,inputs=inputs, 
-                                                                                     layer_id=layer_id, batch_size=32,
+                                                                                     layer_id=layer_id, batch_size=8,
                                                                                      sae_lib=sae_lib)
             saeActvs_by_layer_2[layer_id] = (weight_matrix, reshaped_activations, feature_acts_model)
 
