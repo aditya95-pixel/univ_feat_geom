@@ -25,7 +25,7 @@ def normalize_byChunks(actv_tensor, chunk_size=10000): # chunk_size: Number of r
 
     return torch.tensor(normalized_A)
 
-def batched_correlation(reshaped_activations_A, reshaped_activations_B, batch_size=100):
+def batched_correlation(reshaped_activations_A, reshaped_activations_B, batch_size=8):
     # Ensure tensors are on GPU
     # if torch.cuda.is_available():
     #     reshaped_activations_A = reshaped_activations_A.to('cuda')
