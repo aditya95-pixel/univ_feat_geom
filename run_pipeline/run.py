@@ -123,8 +123,10 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     ### load data
-    from datasets import load_from_disk
-    dataset = load_from_disk("openwebtext-1k")
+    from datasets import load_dataset
+
+    # Load full dataset
+    dataset = load_dataset("stas/openwebtext-10k", split="train", streaming=False)
     dataset = dataset.shuffle(seed=42)
     def get_next_batch(dataset, batch_size=8, max_length=100):
         batch = []
