@@ -124,7 +124,7 @@ def main():
 
     ### load data
     from datasets import load_from_disk
-    dataset = load_from_disk("openwebtext-200")
+    dataset = load_from_disk("openwebtext-1k")
     dataset = dataset.shuffle(seed=42)
     def get_next_batch(dataset, batch_size=8, max_length=100):
         batch = []
