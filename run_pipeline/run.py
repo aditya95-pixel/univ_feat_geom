@@ -122,11 +122,9 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(model_name_1)
     tokenizer.pad_token = tokenizer.eos_token
 
-    ### load data
-    from datasets import load_dataset
-
     # Load full dataset
-    dataset = load_dataset("stas/openwebtext-10k", split="train", streaming=False)
+    from datasets import load_dataset
+    dataset = load_dataset("Skylion007/openwebtext", split="train", streaming=True, trust_remote_code=True)
     dataset = dataset.shuffle(seed=42)
     def get_next_batch(dataset, batch_size=8, max_length=100):
         batch = []
